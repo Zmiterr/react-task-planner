@@ -1,10 +1,16 @@
 import React, {FC} from 'react';
 import {Button, Form, Input} from "antd";
 import {rules} from "../utils/rules";
+import {AuthActions} from "../store/reducers/auth/authActions";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const LoginForm:FC = () => {
+    const dispatch = useDispatch()
+    const {error, isLoading} = useTypedSelector(state => state.auth)
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(AuthActions.login(values.username, values.password))
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -21,6 +27,7 @@ const LoginForm:FC = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
+            {error&&<p>{error}</p>}
             <Form.Item
                 label="Username"
                 name="username"
@@ -38,7 +45,7 @@ const LoginForm:FC = () => {
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" loading={isLoading}>
                     Submit
                 </Button>
             </Form.Item>
