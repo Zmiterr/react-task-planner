@@ -2,11 +2,12 @@ import React, {FC} from 'react';
 import {Col, Layout, Menu, Row} from "antd";
 import {useHistory} from "react-router-dom";
 import {RouteNames} from "../router";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 
 
 const Navbar:FC = () => {
-    const auth =true;
+    const auth = useTypedSelector(state => state.isAuth);
     const router = useHistory()
     return (
         auth?
