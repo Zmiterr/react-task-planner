@@ -4,9 +4,9 @@ import {privateRoutes, publicRoutes, RouteNames} from "../router";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const AppRouter:FC = () => {
-    const auth = useTypedSelector(state => state.isAuth);
+    const {isAuth} = useTypedSelector(state => state.auth);
     return (
-        auth?
+        isAuth?
         <Switch>
             {privateRoutes.map(r =>
                 <Route path={r.path} exact={r.exact} component={r.component} key={r.path}/>

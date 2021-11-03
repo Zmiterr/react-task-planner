@@ -7,10 +7,10 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 
 
 const Navbar:FC = () => {
-    const auth = useTypedSelector(state => state.isAuth);
+    const {isAuth} = useTypedSelector(state => state.auth);
     const router = useHistory()
     return (
-        auth?
+        isAuth?
         <Layout.Header>
             <Row justify="end">
                 <div style={{color: "white"}}>Zmiter</div>

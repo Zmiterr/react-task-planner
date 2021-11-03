@@ -3,7 +3,7 @@ import {store} from "../index";
 import {authReducer} from "./auth/authReducer";
 
 export const rootReducer = combineReducers({
-    isAuth: authReducer
+    auth: authReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>
