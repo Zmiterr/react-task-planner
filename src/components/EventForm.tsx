@@ -54,7 +54,7 @@ const EventForm: FC<EventFormProps> = ({guests, submit}) => {
             <Form.Item
                 label="Event date"
                 name="date"
-                rules={[rules.required()]}
+                rules={[rules.required(), rules.curDate('Set current or future date')]}
 
             >
                 <DatePicker
