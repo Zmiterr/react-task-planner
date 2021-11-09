@@ -9,11 +9,13 @@ import {EventInterface} from "../models/EventInterface";
 
 const Events: FC = () => {
     const dispatch = useDispatch()
+    const {username} = useTypedSelector(state => state.auth.user)
     const [isModalVisible, setIsModalVisible] = useState(false)
     useEffect(()=>{
         dispatch(EventActions.fetchGuests())
+        dispatch(EventActions.fetchEvents(username))
     }, [dispatch])
-    const {guests} = useTypedSelector(state => state.events)
+    const {guests, events} = useTypedSelector(state => state.events)
 
     const submit = (event: EventInterface) => {
         dispatch(EventActions.createEvent(event))
@@ -22,6 +24,7 @@ const Events: FC = () => {
 
     return (
         <div>
+            <div>{JSON.stringify(events)}</div>
             <EventCalendar events={[]} />
             <Row justify="center">
                 <Button onClick={() => setIsModalVisible(true)}>Add event</Button>
