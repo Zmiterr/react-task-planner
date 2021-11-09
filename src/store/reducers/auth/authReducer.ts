@@ -1,4 +1,5 @@
 import {AuthActionsTypes, setAuthInterface, setErrorInterface, setLoadingInterface, setUserInterface} from "./types";
+import {UserInterface} from "../../../models/UserInterface";
 
 interface authState {
     isAuth: boolean;
@@ -7,10 +8,7 @@ interface authState {
     error: string
 }
 
-export interface UserInterface {
-    username: string
-    password: string
-}
+
 
 type authAction = setAuthInterface | setErrorInterface | setUserInterface | setLoadingInterface
 
