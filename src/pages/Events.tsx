@@ -16,7 +16,8 @@ const Events: FC = () => {
     const {guests} = useTypedSelector(state => state.events)
 
     const submit = (event: EventInterface) => {
-        console.log(event)
+        dispatch(EventActions.createEvent(event))
+        setIsModalVisible(false)
     }
 
     return (
