@@ -1,6 +1,6 @@
 export interface EventInterface {
     author: string
     guest: string
-    date: Date
+    date: string
     description: string
 }
