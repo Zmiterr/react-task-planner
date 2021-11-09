@@ -1,16 +1,16 @@
 # Getting Started with Create React App
-  {
+### Auth data:
+
     "username": "admin",
     "password": "111"
-  },
-  {
+
     "username": "user2",
     "password": "222"
-  },
-  {
+
     "username": "user3",
     "password": "333"
-  }
+
+  
 This is multiuser scheduler task application with redux, typescript and ant design
 ## Available Scripts
 In the project directory, you can run:
