@@ -1,8 +1,13 @@
 import React, {FC} from 'react';
 import {Calendar} from "antd";
 import {Moment} from "moment";
+import {EventInterface} from "../models/EventInterface";
 
-const EventCalendar:FC = () => {
+interface EventCalendarProps {
+    events: EventInterface[]
+}
+
+const EventCalendar:FC<EventCalendarProps> = ({events}) => {
     const onPanelChange = (value: Moment, mode: string) => {
         console.log(value.format('YYYY-MM-DD'), mode)
     }

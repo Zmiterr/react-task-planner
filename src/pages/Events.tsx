@@ -7,7 +7,7 @@ const Events: FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false)
     return (
         <div>
-            <EventCalendar/>
+            <EventCalendar events={[]}/>
             <Row justify="center">
                 <Button onClick={() => setIsModalVisible(true)}>Add event</Button>
             </Row>
