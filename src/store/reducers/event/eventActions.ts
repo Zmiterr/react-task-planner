@@ -4,9 +4,9 @@ import {EventInterface} from "../../../models/EventInterface";
 import {AppDispatch} from "../index";
 import UserService from "../../../api/UserService";
 
-export const EventActions ={
-    setGuests: (payload: UserInterface[]):setGuestsAction => ({type: EventActionsEnum.SET_GUESTS, payload: payload}),
-    setEvent: (payload: EventInterface[]):setEventsAction => ({type: EventActionsEnum.SET_EVENTS, payload: payload}),
+export const EventActions = {
+    setGuests: (payload: UserInterface[]): setGuestsAction => ({type: EventActionsEnum.SET_GUESTS, payload: payload}),
+    setEvent: (payload: EventInterface[]): setEventsAction => ({type: EventActionsEnum.SET_EVENTS, payload: payload}),
     fetchGuests: () => async (dispatch: AppDispatch) => {
         try {
             const response = await UserService.getUsers()
@@ -14,5 +14,16 @@ export const EventActions ={
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    createEvent: (event: EventInterface) => async (dispatch: AppDispatch) => {
+        try {
+            const events = localStorage.getItem('events') || '[]'
+            const json = JSON.parse(events) as EventInterface[]
+            json.push(event)
+            dispatch(EventActions.setEvent(json))
+            localStorage.setItem('events', JSON.stringify(json))
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
