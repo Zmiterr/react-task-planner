@@ -25,14 +25,14 @@ const EventForm = () => {
             <Form.Item
                 label="Event date"
                 name="date"
-                rules={[rules.required('Required')]}
+                rules={[rules.required()]}
             >
                 <DatePicker />
             </Form.Item>
             <Form.Item
                 label="User"
                 name="user"
-                rules={[rules.required('Required')]}
+                rules={[rules.required()]}
             >
                 <Select>
                     <Select.Option value="jack">Jack</Select.Option>
