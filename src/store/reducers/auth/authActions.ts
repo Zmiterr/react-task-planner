@@ -1,8 +1,8 @@
 import {AuthActionsTypes, setAuthInterface, setErrorInterface, setLoadingInterface, setUserInterface} from "./types";
 
 import {AppDispatch} from "../index";
-import axios from "axios";
 import {UserInterface} from "../../../models/UserInterface";
+import UserService from "../../../api/UserService";
 
 export const AuthActions = {
     setAuth: (auth: boolean): setAuthInterface => ({type: AuthActionsTypes.SET_AUTH, payload: auth }),
@@ -13,7 +13,7 @@ export const AuthActions = {
         try {
             dispatch(AuthActions.setLoading(true))
             setTimeout(async () => {
-            const response = await axios.get<UserInterface[]>('./users.json')
+            const response = await UserService.getUsers()
             const mockUser = response.data.find(user=> user.username === username && user.password === password)
             if(mockUser) {
                 localStorage.setItem('auth', 'true')
