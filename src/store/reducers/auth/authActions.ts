@@ -1,7 +1,8 @@
 import {AuthActionsTypes, setAuthInterface, setErrorInterface, setLoadingInterface, setUserInterface} from "./types";
-import {UserInterface} from "./authReducer";
+
 import {AppDispatch} from "../index";
 import axios from "axios";
+import {UserInterface} from "../../../models/UserInterface";
 
 export const AuthActions = {
     setAuth: (auth: boolean): setAuthInterface => ({type: AuthActionsTypes.SET_AUTH, payload: auth }),
@@ -24,7 +25,7 @@ export const AuthActions = {
                 dispatch(AuthActions.setError('User is not found'))
             }
 
-            }, 2000)
+            }, 500)
         }catch (e){
             dispatch(AuthActions.setError(String(e)))
         }finally {

@@ -1,4 +1,5 @@
-import {UserInterface} from "./authReducer";
+import {UserInterface} from "../../../models/UserInterface";
+
 
 export enum AuthActionsTypes {
     SET_AUTH = 'SET_AUTH',
